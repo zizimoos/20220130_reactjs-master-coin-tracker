@@ -29,7 +29,14 @@ const CoinList = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px 20px;
 `;
+
+// display: flex;
+// justify-content: space-between;
+// background-color: rgba(0, 0, 0, 0.5);
+// padding: 10px 20px;
+// border-radius: 10px;
 
 const Coin = styled.div`
   width: 360px;
@@ -37,8 +44,8 @@ const Coin = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 15px;
   background-color: ${(props) => props.theme.colors.bgColor2};
   color: ${(props) => props.theme.colors.textColor};
   &:hover {
