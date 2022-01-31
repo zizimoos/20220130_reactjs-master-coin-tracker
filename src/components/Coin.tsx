@@ -6,6 +6,7 @@ import { useQuery } from "react-query";
 import { getCoinInfo, getCoinPrice } from "../Api";
 import Chart from "./Chart";
 import Price from "./Price";
+import { HiArrowCircleLeft } from "react-icons/hi";
 
 const Container = styled.div`
   max-width: 480px;
@@ -15,7 +16,7 @@ const Container = styled.div`
 const Header = styled.header`
   height: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 const Title = styled.h1`
@@ -129,11 +130,30 @@ const Coin = () => {
   return (
     <Container>
       <Header>
-        <CoinImg
-          src={`https://cryptoicon-api.vercel.app/api/icon/${coinData?.symbol.toLowerCase()}`}
-          alt={coinData?.symbol}
-        />
-        <Title>{coinData?.symbol}</Title>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CoinImg
+            src={`https://cryptoicon-api.vercel.app/api/icon/${coinData?.symbol.toLowerCase()}`}
+            alt={coinData?.symbol}
+          />
+          <Title>{coinData?.symbol}</Title>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <Link to="/" style={{ fontSize: "24px", color: "white" }}>
+            <HiArrowCircleLeft />
+          </Link>
+        </div>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
