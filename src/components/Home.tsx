@@ -32,17 +32,12 @@ const CoinList = styled.div`
   padding: 10px 20px;
 `;
 
-// display: flex;
-// justify-content: space-between;
-// background-color: rgba(0, 0, 0, 0.5);
-// padding: 10px 20px;
-// border-radius: 10px;
-
 const Coin = styled.div`
-  width: 360px;
+  width: 340px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
