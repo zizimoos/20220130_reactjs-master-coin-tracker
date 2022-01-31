@@ -15,19 +15,10 @@ export const getCoinPrice = (coinId: string) => {
   );
 };
 
-// const getCoinInfo = async () => {
-//   const response = await fetch(
-//     `https://api.coinpaprika.com/v1/coins/${coinId}`
-//   );
-//   const data = await response.json();
-//   setCoinData(data);
-//   setIsLoading(false);
-// };
-// const getCoinPrice = async () => {
-//   const response = await fetch(
-//     `https://api.coinpaprika.com/v1/tickers/${coinId}`
-//   );
-//   const data = await response.json();
-//   setCoinPrice(data);
-//   setIsLoading(false);
-// };
+export const getCoinOHLC = (coinId: string) => {
+  const endDate = Math.floor(Date.now() / 1000);
+  const startDate = endDate - 60 * 60 * 24 * 90;
+  return fetch(
+    `https://api.coinpaprika.com/v1/coins/${coinId}/ohlcv/historical?start=${startDate}&end=${endDate}`
+  ).then((res) => res.json());
+};

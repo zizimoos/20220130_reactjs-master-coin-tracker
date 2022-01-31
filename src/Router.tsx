@@ -4,13 +4,10 @@ import Home from "./components/Home";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
-        <Route
-          path={`${process.env.PUBLIC_URL}/:coinId/*`}
-          element={<Coin />}
-        />
+        <Route path={`/`} element={<Home />} />
+        <Route path={`/:coinId/*`} element={<Coin />} />
       </Routes>
     </BrowserRouter>
   );

@@ -118,7 +118,8 @@ const Coin = () => {
 
   const { isLoading: dataLoading, data: coinPrice } = useQuery<ICoinPrice>(
     "getCoinPrice",
-    () => getCoinPrice(coinId!)
+    () => getCoinPrice(coinId!),
+    { refetchInterval: 10000 }
   );
 
   const { isLoading, data: coinData } = useQuery<ICoinInfo>("getCoinInfo", () =>
@@ -148,8 +149,8 @@ const Coin = () => {
               <span>${coinData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{coinData?.open_source ? "Yes" : "No"}</span>
+              <span>PRICE:</span>
+              <span>{coinPrice?.quotes.USD.price.toFixed(4)} USD</span>
             </OverviewItem>
           </Overview>
           <Description>{coinData?.description}</Description>
@@ -166,7 +167,9 @@ const Coin = () => {
 
           <Tabs>
             <Tab isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>Chart</Link>
+              <Link to={`/${coinId}/chart`} state={{ coinId }}>
+                Chart
+              </Link>
             </Tab>
             <Tab isActive={priceMatch !== null}>
               <Link to={`/${coinId}/price`}>Price</Link>
@@ -174,7 +177,7 @@ const Coin = () => {
           </Tabs>
 
           <Routes>
-            <Route path="chart" element={<Chart />} />
+            <Route path="chart" element={<Chart coinId={coinId!} />} />
             <Route path="price" element={<Price />} />
           </Routes>
         </>
