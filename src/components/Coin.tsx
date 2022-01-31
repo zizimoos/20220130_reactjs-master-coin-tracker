@@ -133,6 +133,17 @@ const Coin = () => {
         <div
           style={{
             display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <Link to="/" style={{ fontSize: "24px", color: "white" }}>
+            <HiArrowCircleLeft />
+          </Link>
+        </div>
+        <div
+          style={{
+            display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -150,9 +161,7 @@ const Coin = () => {
             alignItems: "center",
           }}
         >
-          <Link to="/" style={{ fontSize: "24px", color: "white" }}>
-            <HiArrowCircleLeft />
-          </Link>
+          <button>mode</button>
         </div>
       </Header>
       {isLoading ? (

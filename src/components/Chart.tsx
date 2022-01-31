@@ -2,6 +2,8 @@ import { useQuery } from "react-query";
 import { getCoinOHLC } from "../Api";
 // import { useLocation } from "react-router-dom";
 import ApexChart from "react-apexcharts";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../Atoms";
 
 interface IcoinId {
   coinId: string;
@@ -24,6 +26,7 @@ const Chart = ({ coinId }: IcoinId) => {
   const { isLoading, data } = useQuery<ICoinOHLCType[]>("getCoinOHLC", () =>
     getCoinOHLC(coinId)
   );
+  const isDark = useRecoilValue(isDarkAtom);
 
   return (
     <div>
@@ -42,7 +45,7 @@ const Chart = ({ coinId }: IcoinId) => {
           ]}
           options={{
             theme: {
-              mode: "light",
+              mode: isDarkAtom ? "light" : "dark",
             },
             chart: {
               height: "500px",

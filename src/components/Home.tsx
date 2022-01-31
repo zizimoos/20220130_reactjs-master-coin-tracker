@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getCoinList } from "../Api";
 import { useQuery } from "react-query";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../Atoms";
 
 const Container = styled.div`
   max-width: 480px;
@@ -61,14 +63,20 @@ interface ICoinType {
   symbol: string;
   quotes: { [key: string]: { price: number; market_cap: number } };
 }
+interface IRouterProps {
+  toggleTheme: () => void;
+}
 
-const Home = () => {
+const Home = ({ toggleTheme }: IRouterProps) => {
   const { isLoading, data } = useQuery<ICoinType[]>("getCoinList", getCoinList);
+  const setterFn = useSetRecoilState(isDarkAtom);
+  const toggleThemeFn = () => setterFn((current) => !current);
 
   return (
     <Container>
       <Header>
         <Title>Crypto Tracker</Title>
+        <button onClick={toggleThemeFn}>Theme</button>
       </Header>
       <CoinList>
         {isLoading ? (
@@ -92,9 +100,7 @@ const Home = () => {
                     src={`https://cryptoicon-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                     alt={coin.name}
                   />
-                  <div>
-                    {coin.rank} : {coin.symbol}
-                  </div>
+                  <div>{coin.symbol}</div>
                 </div>
                 <div> {coin.quotes.USD.price.toFixed(3)} USD</div>
               </Coin>

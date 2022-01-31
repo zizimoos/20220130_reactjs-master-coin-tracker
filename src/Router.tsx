@@ -2,11 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Coin from "./components/Coin";
 import Home from "./components/Home";
 
-const Router = () => {
+interface IRouterProps {
+  toggleTheme: () => void;
+}
+
+const Router = ({ toggleTheme }: IRouterProps) => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path={`/`} element={<Home />} />
+        <Route path={`/`} element={<Home toggleTheme={toggleTheme!} />} />
         <Route path={`/:coinId/*`} element={<Coin />} />
       </Routes>
     </BrowserRouter>

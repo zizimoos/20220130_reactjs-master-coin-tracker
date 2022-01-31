@@ -1,5 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, theme } from "./theme";
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./Atoms";
 
 const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -62,10 +67,18 @@ a {
 `;
 
 function App() {
+  const [isLightTheme, setIsLightTheme] = useState(false);
+  const toggleTheme = () => {
+    setIsLightTheme((current) => !current);
+  };
+  const isDark = useRecoilValue(isDarkAtom);
+
   return (
     <>
-      <GlobalStyle></GlobalStyle>
-      <Router></Router>
+      <ThemeProvider theme={isDark ? lightTheme : theme}>
+        <GlobalStyle></GlobalStyle>
+        <Router toggleTheme={toggleTheme}></Router>
+      </ThemeProvider>
     </>
   );
 }
