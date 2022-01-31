@@ -172,7 +172,7 @@ const Coin = () => {
               </Link>
             </Tab>
             <Tab isActive={priceMatch !== null}>
-              <Link to={`/${coinId}/price`}>Price</Link>
+              <Link to={`/${coinId}/price`}>Information</Link>
             </Tab>
           </Tabs>
 
