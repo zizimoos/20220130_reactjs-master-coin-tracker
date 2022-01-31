@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/20220130_reactjs-master-coin-tracker/static/js/main.1a3eadd3.js",
+    "main.js": "/20220130_reactjs-master-coin-tracker/static/js/main.5d1bcd99.js",
     "index.html": "/20220130_reactjs-master-coin-tracker/index.html",
-    "main.1a3eadd3.js.map": "/20220130_reactjs-master-coin-tracker/static/js/main.1a3eadd3.js.map"
+    "main.5d1bcd99.js.map": "/20220130_reactjs-master-coin-tracker/static/js/main.5d1bcd99.js.map"
   },
   "entrypoints": [
-    "static/js/main.1a3eadd3.js"
+    "static/js/main.5d1bcd99.js"
   ]
 }
